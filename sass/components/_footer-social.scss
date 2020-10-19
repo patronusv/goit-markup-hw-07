@@ -1,0 +1,27 @@
+.footer-social {
+  padding-top: 12px;
+  margin-right: 95px;
+}
+
+.footer-social-links {
+  display: flex;
+}
+.footer-social-links-item:not(:last-child) {
+  margin-right: 10px;
+}
+.footer-social-links-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.footer-social-links-link:hover,
+.footer-social-links-link:focus {
+  background-color: $accent-color;
+}
+.footer-social-links-icon {
+  fill: $primary-bg-color;
+}
