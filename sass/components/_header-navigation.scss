@@ -3,14 +3,16 @@
   align-items: center;
 }
 
-.site-nav {
+.site-nav-list {
+  @extend %list;
   display: flex;
 }
-.site-nav .item:not(:last-child) {
+.site-nav-item:not(:last-child) {
   margin-right: 50px;
 }
-.site-nav .link {
-  /* display: block; */
+.site-nav-link {
+  @extend %link;
+  @extend %hover;
   position: relative;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -20,23 +22,23 @@
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 
-.site-nav .link:hover,
-.site-nav .link:focus {
+.site-nav-link.current {
   color: $accent-color;
-}
 
-.site-nav .link.current {
-  color: $accent-color;
-}
-.site-nav .link.current::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  display: block;
-  width: 100%;
-  height: 4px;
-  background: $accent-color;
-  border-radius: 2px;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: $accent-color;
+    border-radius: 2px;
+  }
 }

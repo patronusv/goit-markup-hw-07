@@ -1,17 +1,20 @@
 .section.occupation {
   padding-top: 0;
 }
-.occupation .list {
+.occupation-list {
+  @extend %list;
   display: flex;
 }
 .occupation-item {
   width: calc((100% - 60px) / 3);
   position: relative;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
 }
-.occupation-item:not(:last-child) {
-  margin-right: 30px;
-}
-.occupation .link {
+.occupation-link {
+  @extend %link;
   display: block;
 }
 .occupation-picture {

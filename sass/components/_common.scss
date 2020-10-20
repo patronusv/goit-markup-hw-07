@@ -19,19 +19,6 @@ body {
   margin-right: auto;
   /* outline: 1px solid navy; */
 }
-.hover {
-  transition-property: color, background-color, box-shadow, border-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.list {
-  list-style: none;
-  // margin: 0;
-  // padding: 0;
-}
-.link {
-  text-decoration: none;
-}
 .section {
   padding: 94px 0;
 }

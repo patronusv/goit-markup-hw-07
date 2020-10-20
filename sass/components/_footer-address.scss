@@ -10,12 +10,18 @@
   font-size: 14px;
   line-height: 1.71;
 }
-.address .link {
-  color: $footer-text-color;
+.address-list {
+  @extend %list;
 }
-.address .link:hover,
-.address .link:focus {
-  color: $accent-color;
+.address-link {
+  @extend %link;
+  @extend %hover;
+  color: $footer-text-color;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+  }
 }
 .address-text {
   display: block;

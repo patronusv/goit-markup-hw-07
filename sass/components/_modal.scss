@@ -11,8 +11,15 @@
   border-radius: 4px;
   opacity: 1;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .backdrop.is-hidden & {
+    transform: translate(-50%, 150%);
+    opacity: 0;
+  }
 }
+
 .close-modal {
+  @extend %hover;
   position: absolute;
   top: 8px;
   right: 8px;
@@ -22,6 +29,12 @@
   color: #000000;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: $primary-bg-color;
+
+  &:hover,
+  &:focus {
+    color: $accent-color;
+    cursor: pointer;
+  }
 }
 .close-icon {
   position: absolute;
@@ -29,11 +42,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   fill: currentColor;
-}
-.close-modal:hover,
-.close-modal:focus {
-  color: $accent-color;
-  cursor: pointer;
 }
 
 .modal-call-to-action {
@@ -50,19 +58,23 @@
   width: 448px;
   /* outline: 1px solid navy; */
 }
-.form-group,
-.form-group-comment {
+%form-group-common {
   position: relative;
   margin-bottom: 10px;
-  /* outline: 1px solid cadetblue; */
   display: flex;
   flex-direction: column;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.form-group:focus-within {
-  color: $accent-color;
+.form-group {
+  @extend %form-group-common;
+
+  &:focus-within {
+    color: $accent-color;
+  }
 }
+
 .form-group-comment {
+  @extend %form-group-common;
   margin-bottom: 20px;
 }
 .modal-label {
@@ -83,11 +95,11 @@
   line-height: 1.14;
   letter-spacing: 0.01em;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.modal-input:focus-within,
-.modal-comment:focus-within {
-  border-color: $accent-color;
-  outline: none;
+
+  &:focus-within {
+    border-color: $accent-color;
+    outline: none;
+  }
 }
 
 .modal-icon-container {
@@ -110,15 +122,23 @@
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.01em;
+  resize: none;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:focus-within {
+    border-color: $accent-color;
+    outline: none;
+  }
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.01em;
+    color: rgba(117, 117, 117, 0.5);
+  }
 }
-.modal-comment::placeholder {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.01em;
-  color: rgba(117, 117, 117, 0.5);
-}
+
 .checkbox-group {
   display: flex;
   flex-shrink: 1;
@@ -151,10 +171,12 @@
   /* outline: 1px solid navy; */
   background-image: url("data:image/svg+xml,%3Csvg width='16' height='15' viewBox='0 0 16 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.2222 1.66667V13.3333H1.77778V1.66667H14.2222ZM14.2222 0H1.77778C0.8 0 0 0.75 0 1.66667V13.3333C0 14.25 0.8 15 1.77778 15H14.2222C15.2 15 16 14.25 16 13.3333V1.66667C16 0.75 15.2 0 14.2222 0Z' fill='%23212121'/%3E%3C/svg%3E");
   transition: background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .modal-checkbox-hidden:checked + & {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='15' viewBox='0 0 16 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='15' rx='2' fill='%232196F3'/%3E%3Cpath d='M3.95703 7.75166L3.88825 7.68604L3.81923 7.75141L2.93123 8.59258L2.85486 8.66492L2.93097 8.73753L6.42671 12.0724L6.49574 12.1382L6.56476 12.0724L14.069 4.91352L14.1449 4.84116L14.069 4.76881L13.1873 3.92764L13.1183 3.86183L13.0493 3.92761L6.49577 10.1735L3.95703 7.75166Z' fill='white' stroke='white' stroke-width='0.2'/%3E%3C/svg%3E");
+  }
 }
-.modal-checkbox-hidden:checked + .modal-checkbox {
-  background-image: url("data:image/svg+xml,%3Csvg width='16' height='15' viewBox='0 0 16 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='15' rx='2' fill='%232196F3'/%3E%3Cpath d='M3.95703 7.75166L3.88825 7.68604L3.81923 7.75141L2.93123 8.59258L2.85486 8.66492L2.93097 8.73753L6.42671 12.0724L6.49574 12.1382L6.56476 12.0724L14.069 4.91352L14.1449 4.84116L14.069 4.76881L13.1873 3.92764L13.1183 3.86183L13.0493 3.92761L6.49577 10.1735L3.95703 7.75166Z' fill='white' stroke='white' stroke-width='0.2'/%3E%3C/svg%3E");
-}
+
 .modal-label-agree {
   display: flex;
   padding-left: 37px;
@@ -169,6 +191,7 @@
   color: $accent-color;
 }
 .modal-submit {
+  @extend %hover;
   display: block;
   margin: 0 auto;
   padding: 10px 56px;
@@ -183,8 +206,9 @@
   border: 0px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-}
-.modal-submit:hover,
-.modal-submit:focus {
-  background-color: #188ce8;
+
+  &:hover,
+  &:focus {
+    background-color: #188ce8;
+  }
 }

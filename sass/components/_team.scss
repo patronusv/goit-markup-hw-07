@@ -1,7 +1,8 @@
 .team {
   background-color: $secondary-bg-color;
 }
-.team .list {
+.team-list {
+  @extend %list;
   display: flex;
 }
 .team-item {
@@ -10,9 +11,10 @@
   border-radius: 0px 0px 4px 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   background-color: $primary-bg-color;
-}
-.team-item:not(:last-child) {
-  margin-right: 30px;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
 }
 .team-photo {
   margin-bottom: 30px;
@@ -37,13 +39,19 @@
   text-align: center;
 }
 .team-social-links {
+  @extend %list;
   display: flex;
   justify-content: center;
 }
 .team-social-links-item {
   color: #afb1b8;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
 }
 .team-social-links-link {
+  @extend %hover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,18 +59,12 @@
   width: 44px;
   border-radius: 50%;
   color: #afb1b8;
-  /* transition-property: background-color, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
-}
-.team-social-links-link:hover,
-.team-social-links-link:focus {
-  color: $primary-bg-color;
 
-  background-color: $accent-color;
-}
-.team-social-links-item:not(:last-child) {
-  margin-right: 10px;
+  &:hover,
+  &:focus {
+    color: $primary-bg-color;
+    background-color: $accent-color;
+  }
 }
 .team-social-links-icon {
   fill: currentColor;

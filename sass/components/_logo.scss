@@ -1,4 +1,5 @@
 .logo {
+  @extend %link;
   margin-right: 93px;
   color: $primary-text-color;
   font-family: $logo-font;
@@ -9,7 +10,8 @@
 .accent {
   color: $accent-color;
 }
-.footer .logo {
+.footer-logo {
+  @extend .logo;
   display: block;
   padding-bottom: 20px;
   color: $primary-bg-color;

@@ -1,8 +1,12 @@
-.advantages .list {
+.advantages-list {
+  @extend %list;
   display: flex;
 }
 .advantages-item {
   width: calc((100% - 90px) / 4);
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
 }
 .advantages-icon-container {
   display: flex;
@@ -13,9 +17,6 @@
   align-items: center;
 }
 
-.advantages-item:not(:last-child) {
-  margin-right: 30px;
-}
 .advantages-title {
   margin-top: 0;
   margin-bottom: 10px;
@@ -29,9 +30,9 @@
   margin-top: 0;
   margin-bottom: 0;
 
-  color: $secondary-text-color;
-
   font-weight: 400;
   font-size: 14px;
   line-height: 1.71;
+
+  color: $secondary-text-color;
 }

@@ -4,12 +4,14 @@
 }
 
 .footer-social-links {
+  @extend %list;
   display: flex;
 }
 .footer-social-links-item:not(:last-child) {
   margin-right: 10px;
 }
 .footer-social-links-link {
+  @extend %hover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,10 +19,11 @@
   width: 44px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
-}
-.footer-social-links-link:hover,
-.footer-social-links-link:focus {
-  background-color: $accent-color;
+
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+  }
 }
 .footer-social-links-icon {
   fill: $primary-bg-color;
